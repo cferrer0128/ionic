@@ -22,7 +22,6 @@ node_modules/
 tmp/
 temp/
 *.ts
-src/index.html
 resources/
 hooks/
 platforms/
