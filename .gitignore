@@ -21,10 +21,8 @@ dist/
 node_modules/
 tmp/
 temp/
-#sources..
-src/*.ts
-src/app/*.ts
-src/app/services/*.ts
+
+src/
 resources/
 hooks/
 platforms/
