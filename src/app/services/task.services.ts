@@ -44,7 +44,7 @@ export class TaskServices{
     getTasks(){
        
        
-        return this.http.get('https://ionwebapi.azurewebsites.net/api/tasks/', { headers: this.setHeaders('') })
+        return this.http.get('/api/tasks', { headers: this.setHeaders('') })
         .map((res:Response) => res.json());
         
     }
