@@ -21,7 +21,7 @@ dist/
 node_modules/
 tmp/
 temp/
-**src/
+*.ts
 src/index.html
 resources/
 hooks/
