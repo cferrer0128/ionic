@@ -42,8 +42,6 @@ export class TaskServices{
         return headers;
      }
     getTasks(){
-       
-       
         return this.http.get('/api/tasks', { headers: this.setHeaders('') })
         .map((res:Response) => res.json());
         
