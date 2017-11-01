@@ -17,7 +17,7 @@ app.use(cors());
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
- app.use('/api',tasks);
+app.use('/api',tasks);
 app.use(express.static('www'));
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
