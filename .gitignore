@@ -23,6 +23,8 @@ tmp/
 temp/
 #sources..
 /src/*.ts
+/src/app/*.ts
+/src/app/services/*.ts
 resources/
 hooks/
 platforms/
