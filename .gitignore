@@ -21,7 +21,6 @@ dist/
 node_modules/
 tmp/
 temp/
-src/
 resources/
 hooks/
 platforms/
