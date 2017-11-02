@@ -22,7 +22,6 @@ app.use(cors());
   next();
 });
 app.use('/api',tasks);
-
 //app.use(express.static(__dirname));
 app.use(express.static('www'));
 
