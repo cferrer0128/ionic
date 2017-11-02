@@ -2,6 +2,6 @@
 # Handle line endings automatically for files detected as text
 # and leave all files detected as binary untouched.
 src/app/pages/about/*.scss linguist-vendored
-src/app/pages/contact/*.scss linguist-vendored
-src/app/pages/home/*.scss linguist-vendored
-src/app/pages/tabs/*.scss linguist-vendored
+src/pages/contact/*.scss linguist-vendored
+src/pages/home/*.scss linguist-vendored
+src/pages/tabs/*.scss linguist-vendored
