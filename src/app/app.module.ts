@@ -7,12 +7,12 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { TasksPage } from '../pages/tasks/tasks'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 import { TaskServices } from './services/task.services'
 import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { HttpModule } from '@angular/http';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    TasksPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { HttpModule } from '@angular/http';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    TasksPage
   ],
   providers: [
     StatusBar,

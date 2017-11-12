@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TaskServices{
 
- 
+    public taskList:any;
+
     constructor(private http: Http){
         console.log('Http Services ')
     }
@@ -41,9 +42,20 @@ export class TaskServices{
 
         return headers;
      }
+   
+    //getTasks
     getTasks(){
-        return this.http.get('/api/tasks', { headers: this.setHeaders('') })
-        .map((res:Response) => res.json());
+        if(this.taskList){
+            console.log('task list exist-->',this.taskList);
+        }else
+            return this.http.get('/api/tasks', { headers: this.setHeaders('') })
+                .map((res:Response) => {
+
+                    this.taskList = res.json();
+                    return this.taskList;
+                });
         
     }
+
+
 }
