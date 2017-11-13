@@ -45,17 +45,34 @@ export class TaskServices{
    
     //getTasks
     getTasks(){
-        if(this.taskList){
-            console.log('task list exist-->',this.taskList);
-        }else
-            return this.http.get('/api/tasks', { headers: this.setHeaders('') })
-                .map((res:Response) => {
+       
+        return this.http.get('/api/tasks', { headers: this.setHeaders('') })
+            .map((res:Response) => {
 
-                    this.taskList = res.json();
-                    return this.taskList;
-                });
+                this.taskList = res.json();
+                return this.taskList;
+            });
         
     }
+    //delete
+    deleteTask(task){
+        
+         task.isdeleted = true;
+         
+         var headers = new Headers();
+         headers.append('Content-Type','application/json');
+         
+         return this.http.delete('/api/task/'+task._id,{headers:headers})
+             .map(res => res.json());
+     }
 
+     addTask(newTask){
+        var headers = new Headers();
+        
+        headers.append('Content-Type','application/json');
+        return this.http.post('api/task',JSON.stringify(newTask),{headers:headers})
+        .map(res => res.json())
+        .toPromise();
+    }
 
 }

@@ -14,11 +14,18 @@
 
 
 <ion-content padding>
+    <ion-list>
+        <ion-item>
+          <button ion-button item-end color="default" (click)="addTask()">Add</button>
+          <ion-input type="text" placeholder="Task Name" [(ngModel)]="Title"></ion-input>
+        
+        </ion-item>
+      </ion-list>
   <ion-list *ngFor="let task of tasks">
     <ion-item>
       <button ion-button item-start color="default">View</button>
       <h2>{{task.Title}}</h2>
-      <button ion-button item-end color="danger">Delete</button>
+      <button ion-button item-end color="danger" (click)="deleteTask(task)">Delete</button>
     
     </ion-item>
   </ion-list>
