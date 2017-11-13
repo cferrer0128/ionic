@@ -34,7 +34,7 @@ export class TasksPage implements OnInit {
     setInterval(() => {
       this.service.getTasks()
       .subscribe(data =>{
-        console.log('refreshed data ', this.service.taskList);
+        //console.log('refreshed data ', this.service.taskList);
         this.tasks = this.service.taskList
       })
     }, 5000);
