@@ -24,16 +24,26 @@ export class TasksPage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TasksPage + Services Running', this.service.taskList);
+    //console.log('ionViewDidLoad TasksPage + Services Running', this.service.taskList);
     
   }
 
   ngOnInit(){
     this.tasks = this.service.taskList;
+
+    setInterval(() => {
+      this.service.getTasks()
+      .subscribe(data =>{
+        console.log('refreshed data ', this.service.taskList);
+        this.tasks = this.service.taskList
+      })
+    }, 5000);
     
   }
   onetask:any;
+  //Intervals
   
+
   //adding task
   addTask(){
 
