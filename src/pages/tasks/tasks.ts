@@ -35,6 +35,7 @@ export class TasksPage implements OnInit {
       this.service.getTasks()
       .subscribe(data =>{
         //console.log('refreshed data ', this.service.taskList);
+        
         this.tasks = this.service.taskList
       })
     }, 5000);

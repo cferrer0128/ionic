@@ -50,6 +50,12 @@ export class TaskServices{
             .map((res:Response) => {
 
                 this.taskList = res.json();
+                let arrTmp=[];
+                this.taskList.map(e =>{
+                    if(!e.isLocation) arrTmp.push(e)
+                });
+                this.taskList = arrTmp;
+                
                 return this.taskList;
             });
         

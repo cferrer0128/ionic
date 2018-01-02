@@ -722,6 +722,12 @@ var TaskServices = (function () {
         return this.http.get('/api/tasks', { headers: this.setHeaders('') })
             .map(function (res) {
             _this.taskList = res.json();
+            var arrTmp = [];
+            _this.taskList.map(function (e) {
+                if (!e.isLocation)
+                    arrTmp.push(e);
+            });
+            _this.taskList = arrTmp;
             return _this.taskList;
         });
     };
