@@ -11,8 +11,12 @@ import { TasksPage } from '../pages/tasks/tasks'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TaskServices } from './services/task.services'
+import { LocationServices } from './services/location.services'
 import { HttpModule } from '@angular/http';
 
+import { Network }  from '@ionic-native/network';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -40,8 +44,11 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
+    LocationServices,
     TaskServices,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Network,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BackgroundGeolocation,Geolocation
   ]
 })
 export class AppModule {}

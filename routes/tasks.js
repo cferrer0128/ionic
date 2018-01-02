@@ -26,6 +26,18 @@ router.get('/task/:id', function(req, res, next){
     });
 });
 
+//location
+router.post('/location', function(req, res, next){
+    var task = req.body;
+    task.isLocation =  true;
+    console.log('save location ' + JSON.stringify(req.body));
+    db.tasks.save(task, function(err, task){
+        if(err){
+            res.send(err);
+        }
+        res.json(task);
+    });
+});
 //Save Task
 router.post('/task', function(req, res, next){
     var task = req.body;

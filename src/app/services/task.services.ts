@@ -9,7 +9,7 @@ export class TaskServices{
     public taskList:any;
 
     constructor(private http: Http){
-        console.log('Http Services ')
+        //console.log('Http Services....!')
     }
 
     setHeaders(verb: string) {
@@ -66,11 +66,22 @@ export class TaskServices{
              .map(res => res.json());
      }
 
-     addTask(newTask){
+    //addTask
+    addTask(newTask){
         var headers = new Headers();
         
         headers.append('Content-Type','application/json');
         return this.http.post('api/task',JSON.stringify(newTask),{headers:headers})
+        .map(res => res.json())
+        .toPromise();
+    }
+
+    //addTask
+    addLocation(newLocation){
+        var headers = new Headers();
+        
+        headers.append('Content-Type','application/json');
+        return this.http.post('api/location',JSON.stringify(newLocation),{headers:headers})
         .map(res => res.json())
         .toPromise();
     }

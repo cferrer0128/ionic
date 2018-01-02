@@ -1,17 +1,27 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+ 
+<ion-content>
+  <h3>Current Latitude: {{locationservices.lat}}</h3>
+  <h3>Current Longitude: {{locationservices.lng}}</h3>
+  
+  <ion-item>
+    <ion-label>Start Tracking</ion-label>
+    <ion-toggle color="danger" checked="false" [(ngModel)]="startTracking" (ionChange)="startEvent()"></ion-toggle>
+  </ion-item>
+  <ion-list>
+    
+      <ion-item>
+        <ion-label floating>Where to go?</ion-label>
+        <ion-input type="text" [(ngModel)]="whereTo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <div id="map"></div>
+      </ion-item>
+    </ion-list>
+    <button ion-button full (click)="calculateGeo()">Get Direction</button>
+   
 </ion-content>
