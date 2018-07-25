@@ -171,8 +171,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(navCtrl, network, toast, locationservices, service) {
+    function HomePage(navCtrl, network, toast, locationservices, service, platform) {
         this.navCtrl = navCtrl;
         this.network = network;
         this.toast = toast;
@@ -181,6 +182,7 @@ var HomePage = (function () {
         this.whereTo = '';
         this.MyLocation = { lat: 0, lng: 0 };
         this.MyLocation = { lat: 0, lng: 0 };
+        this.PlatForm = platform;
     }
     //startEventlat
     HomePage.prototype.startEvent = function () {
@@ -211,7 +213,7 @@ var HomePage = (function () {
                 _this.whereTo = pos;
                 _this.calculateGeo(true);
                 var locationObject = {
-                    Title: "",
+                    Title: _this.PlatForm._default,
                     lat: pos.lat,
                     lng: pos.lng
                 };
@@ -305,13 +307,10 @@ HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"E:\Ionic\ionic\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n \n\n<ion-content>\n\n  <h3>Current Latitude: {{locationservices.lat}}</h3>\n\n  <h3>Current Longitude: {{locationservices.lng}}</h3>\n\n  \n\n  <ion-item>\n\n    <ion-label>Start Tracking</ion-label>\n\n    <ion-toggle color="danger" checked="false" [(ngModel)]="startTracking" (ionChange)="startEvent()"></ion-toggle>\n\n  </ion-item>\n\n  <ion-list>\n\n    \n\n      <ion-item>\n\n        <ion-label floating>Where to go?</ion-label>\n\n        <ion-input type="text" [(ngModel)]="whereTo"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <div id="map"></div>\n\n      </ion-item>\n\n    </ion-list>\n\n    <button ion-button full (click)="calculateGeo()">Get Direction</button>\n\n   \n\n</ion-content>\n\n'/*ion-inline-end:"E:\Ionic\ionic\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_3__app_services_location_services__["a" /* LocationServices */],
-        __WEBPACK_IMPORTED_MODULE_4__app_services_task_services__["a" /* TaskServices */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_network__["a" /* Network */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__app_services_location_services__["a" /* LocationServices */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_services_location_services__["a" /* LocationServices */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__app_services_task_services__["a" /* TaskServices */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_services_task_services__["a" /* TaskServices */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */]) === "function" && _f || Object])
 ], HomePage);
 
+var _a, _b, _c, _d, _e, _f;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -488,7 +487,7 @@ var TasksPage = (function () {
 }());
 TasksPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-tasks',template:/*ion-inline-start:"E:\Ionic\ionic\src\pages\tasks\tasks.html"*/'<!--\n\n  Generated template for the TasksPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Tasks</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item>\n\n          <button ion-button item-end color="default" (click)="addTask()">Add</button>\n\n          <ion-input type="text" placeholder="Task Name" [(ngModel)]="Title"></ion-input>\n\n        \n\n        </ion-item>\n\n      </ion-list>\n\n  <ion-list *ngFor="let task of tasks">\n\n    <ion-item>\n\n      <button ion-button item-start color="default">View</button>\n\n      <h2>{{task.Title}}</h2>\n\n      <button ion-button item-end color="danger" (click)="deleteTask(task)">Delete</button>\n\n    \n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Ionic\ionic\src\pages\tasks\tasks.html"*/,
+        selector: 'page-tasks',template:/*ion-inline-start:"E:\Ionic\ionic\src\pages\tasks\tasks.html"*/'<!--\n\n  Generated template for the TasksPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Tasks</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item>\n\n          <button ion-button item-end color="default" (click)="addTask()">Add</button>\n\n          <ion-input type="text" placeholder="Task Name" [(ngModel)]="Title" name="Title"></ion-input>\n\n        \n\n        </ion-item>\n\n      </ion-list>\n\n  <ion-list *ngFor="let task of tasks">\n\n    <ion-item>\n\n      <button ion-button item-start color="default">View</button>\n\n      <h2>{{task.Title}}</h2>\n\n      <button ion-button item-end color="danger" (click)="deleteTask(task)">Delete</button>\n\n    \n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"E:\Ionic\ionic\src\pages\tasks\tasks.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */],
@@ -751,10 +750,9 @@ var TaskServices = (function () {
 }());
 TaskServices = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], TaskServices);
 
-var _a;
 //# sourceMappingURL=task.services.js.map
 
 /***/ })

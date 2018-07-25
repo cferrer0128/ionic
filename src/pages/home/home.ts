@@ -3,6 +3,9 @@ import { NavController,ToastController } from 'ionic-angular';
 import { Network } from '@ionic-native/network';
 import { LocationServices } from '../../app/services/location.services'
 import { TaskServices } from '../../app/services/task.services';
+
+import { Platform } from 'ionic-angular';
+
 import { concat } from 'rxjs/observable/concat';
 
 declare var google;
@@ -16,16 +19,17 @@ export class HomePage {
 
   public startTracking:any;
   public whereTo:any='';
-  
+  public PlatForm:any;
   constructor(public navCtrl: NavController,
   public network:Network, 
   private toast:ToastController,
   public locationservices:LocationServices,
-  public service:TaskServices) {
+  public service:TaskServices,
+  platform: Platform) {
 
     this.MyLocation ={lat:0,lng:0}
     
-
+    this.PlatForm =  platform;
 
   }
 
@@ -60,7 +64,7 @@ export class HomePage {
         this.whereTo = pos;
         this.calculateGeo(true);
         let locationObject ={
-          Title:"",
+          Title:this.PlatForm._default,
           lat:pos.lat,
           lng:pos.lng
         }
