@@ -8,6 +8,8 @@ export class TaskServices{
 
     public taskList:any;
 
+    private domain:string='https://u9avc8h706.execute-api.us-east-2.amazonaws.com/dev/';
+    
     constructor(private http: Http){
         //console.log('Http Services....!')
     }
@@ -46,18 +48,8 @@ export class TaskServices{
     //getTasks
     getTasks(){
        
-        return this.http.get('/api/tasks', { headers: this.setHeaders('') })
-            .map((res:Response) => {
-
-                this.taskList = res.json();
-                let arrTmp=[];
-                this.taskList.map(e =>{
-                    if(!e.isLocation) arrTmp.push(e)
-                });
-                this.taskList = arrTmp;
-                
-                return this.taskList;
-            });
+        return this.http.get(this.domain)
+            .map(res => res.json());
         
     }
     //delete
@@ -68,7 +60,7 @@ export class TaskServices{
          var headers = new Headers();
          headers.append('Content-Type','application/json');
          
-         return this.http.delete('/api/task/'+task._id,{headers:headers})
+         return this.http.delete(this.domain+task._id,{headers:headers})
              .map(res => res.json());
      }
 
@@ -77,7 +69,7 @@ export class TaskServices{
         var headers = new Headers();
         
         headers.append('Content-Type','application/json');
-        return this.http.post('api/task',JSON.stringify(newTask),{headers:headers})
+        return this.http.post(this.domain,JSON.stringify(newTask),{headers:headers})
         .map(res => res.json())
         .toPromise();
     }
@@ -87,7 +79,7 @@ export class TaskServices{
         var headers = new Headers();
         
         headers.append('Content-Type','application/json');
-        return this.http.post('api/location',JSON.stringify(newLocation),{headers:headers})
+        return this.http.post(this.domain,JSON.stringify(newLocation),{headers:headers})
         .map(res => res.json())
         .toPromise();
     }

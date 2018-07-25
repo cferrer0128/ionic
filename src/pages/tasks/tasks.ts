@@ -15,7 +15,7 @@ import { TaskServices } from '../../app/services/task.services';
 })
 export class TasksPage implements OnInit {
 
-  public tasks:any;
+  public tasks=[];
   public Title:any;
 
   constructor(public navCtrl: NavController, 
@@ -29,16 +29,22 @@ export class TasksPage implements OnInit {
   }
 
   ngOnInit(){
-    this.tasks = this.service.taskList;
+    
 
-    setInterval(() => {
-      this.service.getTasks()
-      .subscribe(data =>{
-        //console.log('refreshed data ', this.service.taskList);
-        
-        this.tasks = this.service.taskList
+    this.service.getTasks()
+      .subscribe(response =>{
+        console.log('refreshed data ', response);
+        /*
+        response.data.forEach(element => {
+          if(!element.isLocation) this.tasks.push(element)   
+        });*/
+       
+        //this.tasks = this.service.taskList
+
+
       })
-    }, 5000);
+
+   
     
   }
   onetask:any;
